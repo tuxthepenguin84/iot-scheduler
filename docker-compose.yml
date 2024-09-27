@@ -1,0 +1,33 @@
+services:
+  iotapi:
+    image: iot-scheduler/iotapi:latest
+    container_name: iotapi
+    privileged: true
+    restart: unless-stopped
+    networks:
+      - proxy
+    #ports:
+    #  - 5000:5000/tcp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /home/auto/git/iot-scheduler/schedule.json:/git/iot-scheduler/schedule.json
+
+  iotscheduler:
+    image: iot-scheduler/iotscheduler:latest
+    container_name: iotscheduler
+    restart: unless-stopped
+    networks:
+      - proxy
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /home/auto/git/iot-scheduler/schedule.json:/git/iot-scheduler/schedule.json
+    depends_on:
+      iotapi:
+        condition: service_healthy
+
+networks:
+  proxy:
+    driver: overlay
+    external: true

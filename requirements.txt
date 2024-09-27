@@ -1,0 +1,10 @@
+astral
+Flask
+Flask-Cors
+Flask-RESTful
+psycopg2-binary
+python-kasa
+requests
+requests-cache
+schedule
+tabulate

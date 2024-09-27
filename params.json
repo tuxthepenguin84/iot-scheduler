@@ -1,0 +1,35 @@
+{
+  "api": {
+    "timeout": 10,
+    "url": "http://iotapi:5000/"
+  },
+  "database": {
+    "columns": ["date", "time", "device", "state", "schedule", "type"],
+    "connection": {
+      "host": "o",
+      "port": "5432",
+      "dbname": "",
+      "user": "",
+      "password": "",
+      "connect_timeout": "2",
+      "sslmode": "require"
+    },
+    "retries": 3,
+    "table": "iot"
+  },
+  "location": {
+    "city": "",
+    "state": "",
+    "tz": "",
+    "lat": "",
+    "long": ""
+  },
+  "matrix": {
+    "roomid": "",
+    "token": ""
+  },
+  "uptime": {
+    "delay": 30,
+    "id": ""
+  }
+}
